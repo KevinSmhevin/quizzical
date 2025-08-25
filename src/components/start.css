@@ -1,0 +1,21 @@
+.start-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.start-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.start-button {
+  background-color: #4D5B9E;
+  color: #F5F7FB;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

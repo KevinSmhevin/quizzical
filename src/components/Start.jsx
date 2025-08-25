@@ -1,3 +1,5 @@
+import './Start.css'
+
 export default function Start(props) {
   return (
     <header className="start-container">
