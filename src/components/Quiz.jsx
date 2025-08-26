@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import he from "he";
-import Question from "./Question";
+import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
+import he from "he";
+
+import Question from "./Question";
 
 import './quiz.css'
 
@@ -26,7 +27,6 @@ export default function Quiz() {
                     const id = nanoid();
                     const question = he.decode(questionItem.question);
                     const correctAnswer = he.decode(questionItem.correct_answer);
-                    console.log("Correct Answer: ", correctAnswer);
                     const incorrectAnswers = questionItem.incorrect_answers.map(ans => he.decode(ans));
                     const shuffledAnswers = shuffleArray([correctAnswer, ...incorrectAnswers]);
                     return {
@@ -94,7 +94,7 @@ export default function Quiz() {
         setScore(newScore);
     }
 
-    function resetQuiz() {
+    function resetQuiz(e) {
         setQuestions([]);
         setAnswers({});
         setLoading(true);

@@ -1,11 +1,9 @@
-import React from 'react'
+import { Fragment } from 'react'
 import clsx from 'clsx'
 import './question.css'
 
 export default function Question(props) {
   const { id, question, answers, onChange, disabled, correctAnswer, quizCompleted } = props
-
-  const choiceClassName = clsx('choice', quizCompleted && correctAnswer &&'choice-disabled')
 
   function getChoiceClassName(answer) {
     return clsx('choice', {
@@ -29,7 +27,7 @@ export default function Question(props) {
         {answers.map((answer, index) => {
           const answerId = `q${id}-a${index}`
           return (
-            <React.Fragment key={answerId}>
+            <Fragment key={answerId}>
               <input
                 type="radio"
                 id={answerId}
@@ -42,11 +40,10 @@ export default function Question(props) {
               <label htmlFor={answerId} className={getChoiceClassName(answer)}>
                 {answer}
               </label>
-            </React.Fragment>
+            </Fragment>
           )
         })}
       </div>
-
       <hr />
     </div>
   )
