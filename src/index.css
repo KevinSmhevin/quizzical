@@ -2,64 +2,81 @@
   font-family: system-ui, Inter, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color: #293264;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --bg-1: #FFF3B8;
+  --bg-2: #D9E7FF;
+  --ink: #3a3f82;       
+  --ink-weak: #6e77a5;  
+  --ring: #b7c5ff;
 }
 
 body {
   margin: 0;
+  /* place-items: center; */
   display: flex;
-  place-items: center;
-  height: 100vh;
   justify-content: center;
   align-items: center;
+  align-content: center;
   position: relative;
   background-color: #f5f7fb;
-  overflow: hidden;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100dvh;         
 }
 
-body::before {
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: #f5f7fb;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.bg-blobs::before,
+.bg-blobs::after {
   content: "";
   position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 300px;
-  height: 300px;
-  background-color: #fffad1;
+  border-radius: 50%;
   pointer-events: none;
-  border-radius: 50% 50% 60% 40% / 60% 40% 50% 50%;
+  z-index: -1;
+
 }
 
-body::after {
-  content: "";
-  position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, #646cff, #b362ff);
-  border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
-  pointer-events: none;
+/* top-right yellow */
+.bg-blobs::before {
+  right: -18vw;
+  top: -14vh;
+  width: clamp(200px, 30vw, 400px);   /* smaller max size */
+  height: clamp(200px, 30vw, 400px);
+  background: var(--bg-1);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  font-weight: 600;
+/* bottom-left blue */
+.bg-blobs::after {
+  left: -20vw;
+  bottom: -20vh;
+  width: clamp(240px, 35vw, 460px);   /* smaller max size */
+  height: clamp(240px, 35vw, 460px);
+  background: var(--bg-2);
+}
+
+/* Mobile: keep proportions similar */
+@media (max-width: 640px) {
+  .bg-blobs::before {
+    right: -28vw;
+    top: -18vh;
+    width: 70vw;
+    height: 70vw;
+  }
+  .bg-blobs::after {
+    left: -30vw;
+    bottom: -24vh;
+    width: 80vw;
+    height: 80vw;
+  }
 }

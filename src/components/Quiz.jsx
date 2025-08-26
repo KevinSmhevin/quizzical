@@ -3,6 +3,8 @@ import he from "he";
 import Question from "./Question";
 import { nanoid } from "nanoid";
 
+import './quiz.css'
+
 export default function Quiz() {
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({});
@@ -62,6 +64,7 @@ export default function Quiz() {
                     question={questionItem.question}
                     correctAnswer={questionItem.correctAnswer}
                     answers={questionItem.answers}
+                    quizCompleted={quizCompleted}
                     onChange={handleAnswerChange}
                     disabled={quizCompleted}
                 />
@@ -115,14 +118,16 @@ export default function Quiz() {
       {loadQuestions()}
       {quizCompleted ? 
       (
-        <>
+        <div className="quiz-results">
           <p>You scored {score} out of {questions.length}</p>
           <button className="quiz-button" onClick={handlePlayAgain}>
               Play Again
           </button>
-        </>
+        </div>
       ) : (
-        <button className="quiz-button" disabled={!allAnswered} onClick={handleSubmit}>Submit</button>
+        <button className="quiz-button" disabled={!allAnswered} onClick={handleSubmit}>
+            Check answers
+        </button>
       )}
     </form>
   )
