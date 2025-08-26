@@ -1,0 +1,14 @@
+.question-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: row;
+}
+
+.question-text {
+    font-size: 1.2em;
+}
